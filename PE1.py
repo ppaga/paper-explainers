@@ -14,7 +14,6 @@ def LR_vars(**kwargs):
     return X,Y
 
 LR_key = namedtuple('LR_key',['N','alpha','sigma'])
-
 def run_LR_simulation(N, sigma, alphas):
   experiments = {}
   for alpha in alphas:
@@ -27,13 +26,14 @@ def run_LR_simulation(N, sigma, alphas):
     model = LinearRegression().fit(X,Y)
     theta_tilde = model.coef_
     Y_tilde = model.predict(X)
-    experiments[key] = theta_tilde, theta
+    experiments[key] = theta_tilde, theta, Y_tilde, Y
   return experiments
   
 
 def plot_results(experiments):
-  fig = plt.figure(figsize = (12,10))
+  fig, axes = plt.subplots(1,2,figsize = (12,20))
   for key,val in experiments.items():
-    theta_tilde, theta = val
-    plt.scatter(theta, theta_tilde, s = 5)
+    theta_tilde, theta, Y_tilde, Y = val
+    axes[0].scatter(Y, Y_tilde, s = 5)
+    axes[1].scatter(theta, theta_tilde, s = 5)
   plt.legend([np.round(key.alpha, decimals=3) for key in experiments.keys()])

@@ -23,7 +23,7 @@ def run_LR_simulation(N, sigma, alphas):
     X_train,Y_train = LR_vars(N=N, theta = theta, sigma = sigma)
     X_test,Y_test = LR_vars(N=N, theta = theta, sigma = sigma)
     
-    model = LinearRegression().fit(X,Y)
+    model = LinearRegression().fit(X_train,Y_train)
     theta_tilde, Y_train_tilde, Y_test_tilde = model.coef_, model.predict(X_train), model.predict(X_test)
     experiments[key] = theta_tilde, theta, Y_train_tilde, Y_train, Y_test_tilde, Y_test
   return experiments

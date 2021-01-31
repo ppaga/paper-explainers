@@ -32,7 +32,7 @@ def run_LR_simulation(N, sigma, alphas):
 def plot_results(experiments):
   fig, axes = plt.subplots(1,3,figsize = (18,6))
   for key,val in experiments.items():
-     theta_tilde, theta, Y_train_tilde, Y_train, Y_test_tilde, Y_test = val
+    theta_tilde, theta, Y_train_tilde, Y_train, Y_test_tilde, Y_test = val
     axes[0].scatter(Y_train, Y_train_tilde, s = 5)
     axes[0].scatter(Y_test, Y_test_tilde, s = 5)
     axes[1].scatter(theta, theta_tilde, s = 5)

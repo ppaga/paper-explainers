@@ -13,11 +13,8 @@ def LR_vars(**kwargs):
 
     return X,Y
 
-N = int(1e4)
-sigma = .5
-alphas = [.01,.1,.2,.5,.9]
-
 LR_key = namedtuple('LR_key',['N','alpha','sigma'])
+
 def run_LR_simulation(N, sigma, alphas):
   experiments = {}
   for alpha in alphas:
